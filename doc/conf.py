@@ -1,7 +1,12 @@
 """Sphinx configuration."""
 
 import datetime
+import sys
 from importlib.metadata import version
+from pathlib import Path
+
+# Make the local _ext directory available for custom Sphinx extensions.
+sys.path.insert(0, str(Path(__file__).parent / "_ext"))
 
 # Sphinx configuration below.
 project = "amazon-braket-sdk"
@@ -10,6 +15,7 @@ release = version
 copyright = f"{datetime.datetime.now().year}, Amazon.com"
 
 extensions = [
+    "generate_examples",
     "sphinxcontrib.apidoc",
     "sphinx.ext.autodoc",
     "sphinx.ext.viewcode",
